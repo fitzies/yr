@@ -1,0 +1,65 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+enum Position {
+  POINTGUARD
+  SHOOTINGGUARD
+  SMALLFORWARD
+  POWERFORWARD
+  CENTER
+}
+
+model Player {
+  id      Int      @id @default(autoincrement())
+  email   String   @unique
+  fullName    String
+
+  birth DateTime
+  ageGroup Int
+  graduatingClass Int
+  homeTown String @default("Singapore, Singapore")
+
+  heightInCm Int
+  weightInKg Int
+
+  primaryPosition Position
+  secondaryPosition Position
+
+  club Club @relation(fields: [clubId], references: [id])
+  clubId Int
+
+  rank Int @default(-1)
+
+  @@index([clubId])
+}
+
+model Club {
+  id              Int      @id @default(autoincrement())
+  name            String
+  abbreviation    String @db.VarChar(3)
+  currentLeague   String
+
+  players         Player[]
+  coaches         Coach[] 
+}
+
+model Coach {
+  id              Int      @id @default(autoincrement())
+  fullName String
+
+  club            Club     @relation(fields: [clubId], references: [id])
+  clubId          Int     
+
+
+  @@index([clubId])
+}

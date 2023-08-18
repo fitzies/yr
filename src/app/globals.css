@@ -2,26 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  margin: 0;
+}
+
+@font-face {
+  font-family: "Kamerik";
+  src: url("../assets/fonts/Kamerik.ttf");
+}
+
+@font-face {
+  font-family: "Kamerik-Bold";
+  src: url("../assets/fonts/Kamerik-Bold.ttf");
+}
+
+body::before {
+  background-attachment: scroll;
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  transform: scale(2.5);
+  top: 0;
+  width: 100vw;
+  z-index: -1;
+  background-image: url("../assets/images/bg.svg");
+  background-size: 100% 100%, auto;
+  background-position: center, 0% 0%;
+  background-repeat: no-repeat, repeat;
 }

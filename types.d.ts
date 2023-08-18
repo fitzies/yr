@@ -1,0 +1,6 @@
+type Position =
+  | "POINTGUARD"
+  | "SHOOTINGGUARD"
+  | "SMALLFORWARD"
+  | "POWERFORWARD"
+  | "CENTER";
