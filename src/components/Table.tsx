@@ -8,9 +8,10 @@ type RowData = Array<string | number>;
 interface TableProps {
   fields: string[];
   data: RowData[];
+  link: boolean;
 }
 
-const Table: React.FC<TableProps> = ({ fields, data }) => {
+const Table: React.FC<TableProps> = ({ fields, data, link }) => {
   const router = useRouter();
 
   return (
@@ -38,6 +39,7 @@ const Table: React.FC<TableProps> = ({ fields, data }) => {
                     key={rowIndex}
                     className="border-b border-light hover:bg-[#222] duration-150 cursor-pointer"
                     onClick={() => {
+                      if (!link) return;
                       router.push(`/browse/players/${rowIndex + 1}`);
                     }}
                   >

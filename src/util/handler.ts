@@ -28,4 +28,11 @@ const playerToUnrankedTable = (players: Player[], clubs: Club[]) => {
   return transformedPlayers;
 };
 
-export { playerToUnrankedTable };
+const clubToTable = (clubs: Club[]) => {
+  const transformedPlayers: string[][] = clubs.map((club) => {
+    return [club.name, club.abbreviation, club.currentLeague];
+  });
+  return transformedPlayers;
+};
+
+export { playerToUnrankedTable, clubToTable };

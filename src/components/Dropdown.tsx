@@ -10,7 +10,7 @@ const Dropdown = () => {
         return (
           <Link
             href={link}
-            className="pl-1 my-1 mx-2 text-sm cursor-pointer text-gray-300 hover:bg-light py-2 rounded-xl"
+            className="pl-1 my-1 mx-3 text-sm cursor-pointer text-gray-300 hover:bg-light py-2 rounded-xl"
             key={i}
           >
             {item}
